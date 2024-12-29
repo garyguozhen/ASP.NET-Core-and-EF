@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Chapter4_LeaveManagementSystem.Web.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Chapter4_LeaveManagmentSystemDB.Web.Data
@@ -9,5 +10,6 @@ namespace Chapter4_LeaveManagmentSystemDB.Web.Data
             : base(options)
         {
         }
+        public DbSet<LeaveType> LeaveTypes { get; set; }
     }
 }
