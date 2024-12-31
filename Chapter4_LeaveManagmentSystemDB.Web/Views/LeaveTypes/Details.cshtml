@@ -1,4 +1,4 @@
-@model Chapter4_LeaveManagementSystem.Web.Data.LeaveType
+@model LeaveTypeViewModel
 
 @{
     ViewData["Title"] = $"{Model.Name} Details";
@@ -17,10 +17,10 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NumberofDays)
+            @Html.DisplayNameFor(model => model.Days)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NumberofDays)
+            @Html.DisplayFor(model => model.Days)
         </dd>
     </dl>
 </div>

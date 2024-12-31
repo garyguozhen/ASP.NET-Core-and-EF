@@ -1,4 +1,4 @@
-@model Chapter4_LeaveManagementSystem.Web.Data.LeaveType
+@model LeaveTypeViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -19,9 +19,9 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NumberofDays" class="control-label"></label>
-                <input asp-for="NumberofDays" class="form-control" />
-                <span asp-validation-for="NumberofDays" class="text-danger"></span>
+                <label asp-for="Days" class="control-label"></label>
+                <input asp-for="Days" class="form-control" />
+                <span asp-validation-for="Days" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

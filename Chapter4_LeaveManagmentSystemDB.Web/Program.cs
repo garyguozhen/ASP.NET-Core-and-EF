@@ -1,5 +1,8 @@
+using System.Reflection;
 using Chapter4_LeaveManagmentSystemDB.Web.Data;
+using Chapter4_LeaveManagmentSystemDB.Web.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +15,10 @@ var connectionString = builder.Configuration.GetConnectionString("SqlServerConne
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+
+builder.Services.AddScoped<ILeaveTypeServices, LeaveTypeServices>();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
