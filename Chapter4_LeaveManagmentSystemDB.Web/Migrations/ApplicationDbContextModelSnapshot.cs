@@ -4,23 +4,20 @@ using Chapter4_LeaveManagmentSystemDB.Web.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Chapter4_LeaveManagmentSystemDB.Web.Data.Migrations
+namespace Chapter4_LeaveManagmentSystemDB.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241228132549_AddLeaveType")]
-    partial class AddLeaveType
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.11")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -34,8 +31,7 @@ namespace Chapter4_LeaveManagmentSystemDB.Web.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<int>("NumberofDays")
                         .HasColumnType("int");
@@ -70,6 +66,26 @@ namespace Chapter4_LeaveManagmentSystemDB.Web.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "9120f1fb-cd1d-439e-a933-aa7b5680a2ca",
+                            Name = "Normal",
+                            NormalizedName = "NORMAL"
+                        },
+                        new
+                        {
+                            Id = "6ddb0e2f-2b9f-49be-b44e-5604e87601e6",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "a900f623-1ed0-4764-9b5c-9134a7a92eed",
+                            Name = "Contributer",
+                            NormalizedName = "CONTRIBUTER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -160,6 +176,24 @@ namespace Chapter4_LeaveManagmentSystemDB.Web.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "0f3fdff1-3daa-4978-ad34-e7c43781a7f9",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "7e58b413-123e-47db-83e2-9ce1dd0bf9a5",
+                            Email = "me@test.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ME@TEST.COM",
+                            NormalizedUserName = "ME@TEST.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAELAS157BHHpPGl96aihu6n7CgVWFTnR4buV9NTkY0/BlEcoiq//6vvMdNTMFn0PnMw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "b0a11e53-11c6-403f-ad07-42fc68a6b8e9",
+                            TwoFactorEnabled = false,
+                            UserName = "me@test.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -224,6 +258,13 @@ namespace Chapter4_LeaveManagmentSystemDB.Web.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "0f3fdff1-3daa-4978-ad34-e7c43781a7f9",
+                            RoleId = "6ddb0e2f-2b9f-49be-b44e-5604e87601e6"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
